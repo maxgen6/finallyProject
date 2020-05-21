@@ -12,6 +12,7 @@ import getCheckList from './modules/getCheckList';
 import consultation from './modules/consultation';
 import calculator from './modules/calculator';
 import sendForm from './modules/sendForm';
+import sendSale from './modules/sendSale';
 
 
 
@@ -22,3 +23,4 @@ getCheckList();
 consultation();
 calculator();
 sendForm();
+sendSale();

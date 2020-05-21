@@ -39,7 +39,10 @@ const sendForm = () => {
             event.preventDefault();
             form.appendChild(statusMessage);
             statusMessage.textContent = loadMessage;
-
+            document.querySelectorAll('.phone-user').forEach((elem) => elem.value = '');
+            document.getElementsByName('user_name').forEach((elem) => elem.value = '');
+            document.querySelectorAll('.user_quest').forEach((elem) => elem.value = '');
+            
             const formData = new FormData(form);
 
             let body = {};
@@ -54,10 +57,18 @@ const sendForm = () => {
                         throw new Error('status network now 200');
                     }
                     statusMessage.textContent = succesMessage;
+                    form.reset();
+                    setTimeout(() => {
+                        statusMessage.remove();
+                    }, 5000);
                 })
                 .catch((error) => {
                     statusMessage.textContent = errorMessage;
-                    console.err(error);
+                    console.log(error);
+                    form.reset();
+                    setTimeout(() => {
+                        statusMessage.remove();
+                    }, 5000);
                 });
         
         });
@@ -76,4 +87,7 @@ const sendForm = () => {
 
 
 };
+
+
+
 export default sendForm;
