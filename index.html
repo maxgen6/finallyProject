@@ -1,4 +1,3 @@
-  
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -44,7 +43,7 @@
                 <div class="contacts">
                     <p>+7 <img src="" alt="" style="width: 0px">(800) <img src="" alt="" style="width: 0px">555-<img
                             src="" alt="" style="width: 0px">64-47</p>
-                    <a class="call-btn" href="#">Перезвоните мне</a>
+                    <a class="call-btn" data-button-title="Получить рассчет и скидку" href="#">Перезвоните мне</a>
                 </div>
             </div>
         </div>
@@ -78,17 +77,18 @@
                 </div>
             </div>
             <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12">
-                <form class="main-form text-center wow fadeInRight">
+                <form class="main-form text-center wow fadeInRight capture-form common-form" id="main-form" method="post">
                     <h4>Заказать консультацию!</h4>
                     <p>Не знаете как построить канализацию? <br> Закажите <span>бесплатную</span> консультацию <br> мы
                         подскажем и подготовим проект и смету</p>
                     <label for="phone_3">Ваш телефон для получения скидки</label>
-                    <input class="phone-user" type="text" id="phone_3" name="user_phone" placeholder="+7(___)___-__-__"
+                    <input class="phone-user" type="tel" id="phone_3" name="user_phone" placeholder="+__(___)___-__-__"
                            required>
                     <button class="button main-form-btn" name="submit" type="submit">Получить консультацию</button>
                     <p class="small">Заполнения заявки Вас ни к чему не обязывает! <br> Вы сможете отказаться в любой
                         момент</p>
                     <p class="stock">Осталось 3 места на май !</p>
+                    <div class=status-message></div>
                 </form>
             </div>
         </div>
@@ -107,17 +107,18 @@
             </div>
             <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1 col-sm-12 wow fadeInRight"
                  data-wow-delay="0.2s">
-                <form class="capture-form text-center">
+                <form class="capture-form text-center common-form" method="post">
                     <label for="name_2">Как к вам обращаться</label>
-                    <input type="text" id="name_2" name="user_name" placeholder="Ваше имя" required>
+                    <input class="user_name textfiltr" type="text" id="name_2" name="user_name" placeholder="Ваше имя" required>
                     <label for="phone_2">Ваш телефон для получения скидки</label>
-                    <input class="phone-user" type="text" id="phone_2" name="user_phone" placeholder="+7(___)___-__-__"
+                    <input class="phone-user" type="tel" id="phone_2" name="user_phone" placeholder="+__(___)___-__-__"
                            required>
                     <button class="button capture-form-btn" name="submit" type="submit">Получить расчет и скидку
                     </button>
                     <p class="small">Вы получите расчет стоимости с учетом выбора <br>подходящего объема септика. типа
                         грунта, <br> расположения объектов на участке, уровня грунтовых <br> вод, типа фундамента дома и
                         еще 7 параметров</p>
+                    <div class="status-message"></div>
                 </form>
             </div>
         </div>
@@ -127,25 +128,25 @@
 <section class="constructor">
     <div class="container">
         <div class="row">
-            <h2>Онлайн конструктор септика</h2>
+            <form id="calculator-form">
+                <h2>Онлайн конструктор септика</h2>
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-
+                <div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
                     <div class="panel panel-default panel-one wow fadeInLeft">
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                <a class="collapsed collapsed-tab" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                                    aria-expanded="true" aria-controls="collapseOne">
                                     <span class="link-text">1. Тип септика</span>
                                 </a>
                             </h4>
                         </div>
-                        <div  class="panel-collapse collapse in" role="tabpanel"
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                              aria-labelledby="headingOne">
                             <div class="panel-body">
                                 <img class="type-septic" src="img/constructor/type-septic.png" alt="septic">
-                                <div class="onoffswitch">
-                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
+                                <div class="onoffswitch" id="myonoffswitch-first-label">
+                                    <input type="checkbox" name="two-cameras" class="onoffswitch-checkbox"
                                            id="myonoffswitch" checked>
                                     <label class="onoffswitch-label" for="myonoffswitch">
                                         <span class="onoffswitch-inner"></span>
@@ -154,8 +155,8 @@
                                 </div>
                                 <img class="type-septic" src="img/constructor/type-septic-two.png" alt="septic">
                                 <p>камерный</p>
-                                <a class="button construct-btn collapsed" data-toggle="collapse"
-                                   data-parent="#accordion" href="#collapseTwo"><span>Следующий шаг</span></a>
+                                <a class="button construct-btn collapsed next" data-toggle="collapse"
+                                   data-parent="#accordion" href="#collapseTwo">Следующий шаг</a>
                             </div>
                         </div>
                     </div>
@@ -163,51 +164,52 @@
                     <div class="panel panel-default panel-two wow fadeInRight" data-wow-delay="0.1s">
                         <div class="panel-heading" role="tab" id="headingTwo">
                             <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                <a class="collapsed collapsed-tab" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     <span class="link-text">2. Диаметр и количество колец</span>
                                 </a>
                             </h4>
                         </div>
-                        <div  class="panel-collapse collapse" role="tabpanel"
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                              aria-labelledby="headingTwo">
                             <div class="panel-body">
-
-                                <div class="title-text">первый колодец (приемный)</div>
-                                <div class="select-box">
-                                    <p><strong>Диаметр</strong></p>
-                                    <select class="form-control1 expand">
-                                        <option>1.4 метра</option>
-                                        <option>2 метра</option>
-                                    </select>
-                                </div>
-                                <div class="select-box">
-                                    <p><strong>Количество колец</strong></p>
-                                    <select class="form-control2 expand">
-                                        <option>1 штука</option>
-                                        <option>2 штуки</option>
-                                        <option>3 штуки</option>
-                                    </select>
-                                </div>
-
-                                <div class="title-text">второй колодец (дренажный)</div>
-                                <div class="select-box">
-                                    <p><strong>Диаметр</strong></p>
-                                    <select class="form-control3 expand">
-                                        <option>1.4 метра</option>
-                                        <option>2 метра</option>
-                                    </select>
-                                </div>
-                                <div class="select-box">
-                                    <p><strong>Количество колец</strong></p>
-                                    <select class="form-control4 expand">
-                                        <option>1 штука</option>
-                                        <option>2 штуки</option>
-                                        <option>3 штуки</option>
-                                    </select>
-                                </div>
-                                <a class="button construct-btn" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseThree"><span>Следующий шаг</span></a>
+                                    <div class="title-text">первый колодец (приемный)</div>
+                                    <div class="select-box">
+                                        <label for="diameter-1"><strong>Диаметр</strong></label>
+                                        <select class="form-control expand" id="diameter-1" name="diameter-1">
+                                            <option value="1.4">1.4 метра</option>
+                                            <option value="2.0">2 метра</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-box">
+                                        <label for="rings-count-1"><strong>Количество колец</strong></label>
+                                        <select class="form-control expand" id="rings-count-1" name="rings-count-1">
+                                            <option value="1">1 штука</option>
+                                            <option value="2">2 штуки</option>
+                                            <option value="3">3 штуки</option>
+                                        </select>
+                                    </div>
+                                
+                                <div id="second-fountain">
+                                    <div class="title-text">второй колодец (дренажный)</div>
+                                    <div class="select-box">
+                                        <label for="diameter-2"><strong>Диаметр</strong></label>
+                                        <select class="form-control expand" id="diameter-2" name="diameter-2">
+                                            <option value="1.4">1.4 метра</option>
+                                            <option value="2.0">2 метра</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-box">
+                                        <label for="rings-count-2"><strong>Количество колец</strong></label>
+                                        <select class="form-control expand" id="rings-count-2" name="rings-count-2">
+                                            <option value="1">1 штука</option>
+                                            <option value="2">2 штуки</option>
+                                            <option value="3">3 штуки</option>
+                                        </select>
+                                    </div>
+                                </div>    
+                                <a class="button construct-btn next" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseThree">Следующий шаг</a>
                             </div>
                         </div>
                     </div>
@@ -221,22 +223,22 @@
                                 </a>
                             </h4>
                         </div>
-                        <div  class="panel-collapse collapse" role="tabpanel"
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
                              aria-labelledby="headingThree">
                             <div class="panel-body">
                                 </p>
 
-                                <div class="onoffswitch">
+                                <div class="onoffswitch" id="myonoffswitch-two-label">
                                     <input type="checkbox" name="onoffswitch-two" class="onoffswitch-checkbox"
-                                           id="myonoffswitch-two" checked>
+                                           id="myonoffswitch-two" name="bottom">
                                     <label class="onoffswitch-label" for="myonoffswitch-two">
                                         <span class="onoffswitch-inner"></span>
                                         <span class="onoffswitch-switch"></span>
                                     </label>
                                 </div>
                                 <img class="bottom-septic-img" src="img/constructor/bottom-septic.png" alt="bs">
-                                <a class="button construct-btn" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"><span>Следующий шаг</span></a>
+                                <a class="button construct-btn next" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Следующий шаг</a>
                             </div>
                         </div>
                     </div>
@@ -244,18 +246,18 @@
                     <div class="panel panel-default panel-four wow fadeInRight" data-wow-delay="0.3s">
                         <div class="panel-heading" role="tab" id="headingFour">
                             <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                <a class="collapsed collapsed-tab" role="button" data-toggle="collapse" data-parent="#accordion"
                                    href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     <span class="link-text">4. Расстояние от септика до дома</span>
                                 </a>
                             </h4>
                         </div>
-                        <div  class="panel-collapse collapse" role="tabpanel"
+                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
                              aria-labelledby="headingFour">
                             <div class="panel-body">
                                 <p>Введите расстояние до дома</p>
-                                <input type="text">
-                                <button class="button construct-btn call-btn">Получить расчет и скидку</button>
+                                <input type="text" id="distance" name="distance" class="recet">
+                                <button class="button construct-btn call-btn" id="call-btn-result" data-button-title="Получить расчет и скидку" data-form="calculator-form">Получить расчет и скидку</button>
                             </div>
                         </div>
                     </div>
@@ -264,8 +266,9 @@
 
             <div class="col-lg-6 col-md-6 col-sm-6 wow fadeInRight">
                 <img class="tank-img" src="img/constructor/septic-tank.png" alt="tank">
-                <input id="calc-result" type="text" placeholder="примерная стоимость" disabled>
+                <input id="calc-result" type="text" placeholder="примерная стоимость" readonly name="total-price"/>
             </div>
+        </form>
 
         </div>
     </div>
@@ -283,7 +286,7 @@
                         <div class="img-block">
                             <img src="img/sentence/1.png" alt="1">
                         </div>
-                        <button class="discount-btn button sentence-btn">Заказать со скидкой</button>
+                        <button class="call-btn discount-btn button sentence-btn" data-button-title="Заказать со скидкой">Заказать со скидкой</button>
                     </div>
                 </div>
 
@@ -293,7 +296,7 @@
                         <div class="img-block">
                             <img src="img/sentence/2.png" alt="2">
                         </div>
-                        <button class="discount-btn button sentence-btn">Заказать со скидкой</button>
+                        <button class="call-btn discount-btn button sentence-btn" data-button-title="Заказать со скидкой">Заказать со скидкой</button>
                     </div>
                 </div>
 
@@ -303,41 +306,41 @@
                         <div class="img-block">
                             <img src="img/sentence/3.png" alt="3">
                         </div>
-                        <button class="discount-btn button sentence-btn">Заказать со скидкой</button>
+                        <button class="call-btn discount-btn button sentence-btn" data-button-title="Заказать со скидкой">Заказать со скидкой</button>
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-4  hidden">
+                <div class="col-xs-12 col-sm-6 col-md-4" id="hidden-blok" hidden>
                     <div class="shadow-block wow fadeInDown">
                         <h3>Погреб колодец под ключ</h3>
                         <div class="img-block">
                             <img src="img/sentence/4.png" alt="4">
                         </div>
-                        <button class="discount-btn button sentence-btn">Узнать цену со скидкой</button>
+                        <button class="call-btn discount-btn button sentence-btn" data-button-title="Узнать цену со скидкой">Узнать цену со скидкой</button>
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-4 hidden">
+                <div class="col-xs-12 col-sm-6 col-md-4" id="hidde-block" hidden>
                     <div class="shadow-block wow fadeInDown" data-wow-delay="0.1s">
                         <h3>Погреб+скважина под ключ</h3>
                         <div class="img-block">
                             <img src="img/sentence/5.png" alt="5">
                         </div>
-                        <button class="discount-btn button sentence-btn">Узнать цену со скидкой</button>
+                        <button class="call-btn discount-btn button sentence-btn" data-button-title="Узнать цену со скидкой">Узнать цену со скидкой</button>
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-4 hidden">
+                <div class="col-xs-12 col-sm-6 col-md-4" id="hidde-blok" hidden>
                     <div class="shadow-block wow fadeInDown" data-wow-delay="0.2s">
-                        <h3>Септик накопительный под ключ</h3>
+                        <h3>Септик накопительный</h3>
                         <div class="img-block">
                             <img src="img/sentence/6.png" alt="6">
                         </div>
-                        <button class="discount-btn button sentence-btn">Узнать цену со скидкой</button>
+                        <button class="call-btn discount-btn button sentence-btn" data-button-title="Узнать цену со скидкой">Узнать цену со скидкой</button>
                     </div>
                 </div>
 
-                <button class="button add-sentence-btn">Больше...</button>
+                <a href="#" class="button add-sentence-btn">Больше...</a>
             </div>
 
 
@@ -356,28 +359,27 @@
                 <p>Наш специалист бесплатно приедет, рассчитает<br>септик именно для вашего участка и дома! <br><br>А
                     также зафиксируйте специальные цены <br><strong>на монтаж септиков со скидкой 15%</strong></p>
                 <p class="gauging-bold">Выезд специалиста вас ни к чему не обязывает!</p>
-                <button class="check-btn button gauging-button">Получить чек-лист и скидку</button>
+                <button class="check-btn button gauging-button call-btn" data-button-title="Получить чек-лист и скидку">Получить чек-лист и скидку</button>
                 <span>Вы можете воспользоваться скидкой в течении 30 дней.</span>
             </div>
         </div>
     </div>
 </section>
-
 <section class="questions">
     <div class="container">
         <h2>Часто задаваемые вопросы</h2>
-        <div class="panel-group wow slideInDown" id="accordion-two" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion wow slideInDown" id="accordion-two" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne-two">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two"
+                        <a class="collapsed collapsed-tab" role="button" data-toggle="collapse" data-parent="#accordion-two" href="#collapseOne-two" 
                            aria-expanded="true" aria-controls="collapseOne-two">
                             Существует ли вероятность того, что подводящий трубопровод замерзнет?
                         </a>
                     </h4>
                 </div>
-                <div  class="panel-collapse collapse in" role="tabpanel"
-                     aria-labelledby="headingOne">
+                <div id="collapseTwo-two" class="panel-collapse collapse in" role="tabpanel"
+                    aria-labelledby="headingTwo-two">
                     <div class="panel-body">
                         Вероятность того, что вода в подводящем трубопроводе замерзнет, отсутствует, потому что она
                         находится в трубе лишь на протяжении небольшого промежутка времени, а все остальное время труба
@@ -390,14 +392,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo-two">
                     <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
+                        <a class="collapsed collapsed-tab" role="button" data-toggle="collapse" data-parent="#accordion-two"
                            href="#collapseTwo-two" aria-expanded="false" aria-controls="collapseTwo-two">
                             Помогают ли предлагаемые вами устройства достичь в загородном доме комфорта городского
                             уровня?
                         </a>
                     </h4>
                 </div>
-                <div class="panel-collapse collapse" role="tabpanel"
+                <div id="collapseTwo-two" class="panel-collapse collapse" role="tabpanel"
                      aria-labelledby="headingTwo-two">
                     <div class="panel-body">
                         Нет, не может. Армированное изделие и марка бетона М-350, позволяют выдерживать значительные
@@ -408,13 +410,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingThree-two">
                     <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-two"
+                        <a class="collapsed collapsed-tab" role="button" data-toggle="collapse" data-parent="#accordion-two"
                            href="#collapseThree-two" aria-expanded="false" aria-controls="collapseThree-two">
                             Погибают ли бактерии в холодный период при долгом простое системы?
                         </a>
                     </h4>
                 </div>
-                <div class="panel-collapse collapse" role="tabpanel"
+                <div id="collapseThree-two" class="panel-collapse collapse" role="tabpanel"
                      aria-labelledby="headingThree-two">
                     <div class="panel-body">
                         Да. Иногда зимний монтаж предпочтительней. Большегрузная техника по мороженому грунту не
@@ -440,11 +442,10 @@
             <div class="col-lg-6 col-md-6">
                 <p class="question">Остались вопросы?</p>
                 <p>Введите свой вопрос и в течении 15 минут я свяжусь с вами!</p>
-                <form class="director-form">
-                    <input type="text" class="user_quest" placeholder="Введите свой вопрос" required>
-                    <button class="button director-btn consultation-btn" name="submit" type="submit">Получить
-                        консультацию
-                    </button>
+                <form class="capture-form text-center" id="question-form">
+                    <input class="recet textfiltr" type="text" name="user_quest" placeholder="Введите свой вопрос" id="questions-input" required>
+                    <button class="button director-btn consultation-btn call-btn" name="submit" type="submit" id="quest-btn" data-button-title="Получить
+                    консультацию" data-form="question-form">Получить консультацию</button>
                 </form>
 
 
@@ -472,99 +473,38 @@
                 <div class="contacts">
                     <p>+7 <img src="" alt="" style="width: 0px">(800) <img src="" alt="" style="width: 0px">555-<img
                             src="" alt="" style="width: 0px">64-47</p>
-                    <a class="call-btn" href="#">Перезвоните мне</a>
-                </div>
+                            <a class="call-btn" data-button-title="Получить рассчет и скидку" href="#">Перезвоните мне</a>
+                        </div>
             </div>
         </div>
     </div>
 </header>
 
 
-<!-- Всплывающие окна -->
-<div class="popup-call popup">
+<!-- Всплывающие окнo -->
+       
+<div id="universal-popup" class="popup-discount popup">
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
-                <span class="circle"><button class="popup-close">&times;</button></span>
-                <label for="name_1">Как к вам обращаться</label>
-                <input type="text" id="name_1" name="user_name" placeholder="Ваше имя" required>
-                <label for="phone_1">Ваш телефон для получения скидки</label>
-                <input class="phone-user" type="text" id="phone_1" name="user_phone" placeholder="+7(___)___-__-__"
-                       required>
-                <button class="button capture-form-btn" name="submit" type="submit">Получить расчет и скидку</button>
-                <p class="small">Вы получите расчет стоимости с учетом выбора <br>подходящего объема септика. типа
-                    грунта, <br> расположения объектов на участке, уровня грунтовых <br> вод, типа фундамента дома и еще
-                    7 параметров</p>
-            </form>
-            <!-- </div> -->
-        </div>
-    </div>
-</div>
-
-<div class="popup-discount popup">
-    <div class="popup-dialog">
-        <div class="popup-content">
-            <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
+            <form class="capture-form text-center common-form" method="post" id="universal-popup-form">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_11">Как к вам обращаться</label>
-                <input type="text" id="name_11" name="user_name" placeholder="Ваше имя" required>
+                <input class="user_name textfiltr" type="text" id="name_11" name="user_name" placeholder="Ваше имя" required>
                 <label for="phone_11">Ваш телефон для получения скидки</label>
-                <input class="phone-user" type="text" id="phone_11" name="user_phone" placeholder="+7(___)___-__-__"
+                <input class="phone-user" type="tel" id="phone_11" name="user_phone" placeholder="+__(___)___-__-__"
                        required>
                 <button class="button capture-form-btn" name="submit" type="submit">Заказать со скидкой</button>
                 <p class="small">Вы получите расчет стоимости с учетом выбора <br>подходящего объема септика. типа
                     грунта, <br> расположения объектов на участке, уровня грунтовых <br> вод, типа фундамента дома и еще
                     7 параметров</p>
+                <div class=status-message></div>
             </form>
             <!-- </div> -->
         </div>
     </div>
 </div>
 
-<div class="popup-check popup">
-    <div class="popup-dialog">
-        <div class="popup-content">
-            <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
-                <span class="circle"><button class="popup-close">&times;</button></span>
-                <label for="name_12">Как к вам обращаться</label>
-                <input type="text" id="name_12" name="user_name" placeholder="Ваше имя" required>
-                <label for="phone_12">Ваш телефон для получения скидки</label>
-                <input class="phone-user" type="text" id="phone_12" name="user_phone" placeholder="+7(___)___-__-__"
-                       required>
-                <button class="button capture-form-btn" name="submit" type="submit">Получить чек-лист и скидку</button>
-                <p class="small">Вы получите расчет стоимости с учетом выбора <br>подходящего объема септика. типа
-                    грунта, <br> расположения объектов на участке, уровня грунтовых <br> вод, типа фундамента дома и еще
-                    7 параметров</p>
-            </form>
-            <!-- </div> -->
-        </div>
-    </div>
-</div>
-
-<div class="popup-consultation popup">
-    <div class="popup-dialog">
-        <div class="popup-content">
-            <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
-                <span class="circle"><button class="popup-close">&times;</button></span>
-                <label for="name_13">Как к вам обращаться</label>
-                <input type="text" id="name_13" name="user_name" placeholder="Ваше имя" required>
-                <label for="phone_13">Ваш телефон для получения скидки</label>
-                <input class="phone-user" type="text" id="phone_13" name="user_phone" placeholder="+7(___)___-__-__"
-                       required>
-                <button class="button capture-form-btn" name="submit" type="submit">Получить консультацию</button>
-                <p class="small">Вы получите расчет стоимости с учетом выбора <br>подходящего объема септика. типа
-                    грунта, <br> расположения объектов на участке, уровня грунтовых <br> вод, типа фундамента дома и еще
-                    7 параметров</p>
-            </form>
-            <!-- </div> -->
-        </div>
-    </div>
-</div>
-
- <script src="./dist/main.js"></script>
+<script src="./dist/main.js"></script>
 </body>
 </html>

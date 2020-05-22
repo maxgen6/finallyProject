@@ -1,26 +1,24 @@
-
+'use strict'; 
 
 import "@babel/polyfill";
 import 'nodelist-foreach-polyfill';
 import elementClosest from 'element-closest';
 elementClosest(window);
-
-import headerAndFooter from './modules/headerAndFooter';
-import accordion from './modules/accordion';
-import addBtn from './modules/addBtn';
-import getCheckList from './modules/getCheckList';
-import consultation from './modules/consultation';
-import calculator from './modules/calculator';
-import sendForm from './modules/sendForm';
-import sendSale from './modules/sendSale';
+import "formdata-polyfill";
+import "es6-promise";
+import "fetch-polyfill";
 
 
+import './modules/append-polyfill';
+import maskPhone from './modules/maskPhone';
+import popupCallForm from './modules/popupCallForm';
+import butoonMore from './modules/butoonMore';
+import accordionPerformance from './modules/accordionPerformance';
+import calculatorAccordion from './modules/calculatorAccordion';
 
-headerAndFooter();
-accordion();
-addBtn();
-getCheckList();
-consultation();
-calculator();
-sendForm();
-sendSale();
+maskPhone();
+popupCallForm();
+butoonMore();
+accordionPerformance();
+calculatorAccordion();
+
